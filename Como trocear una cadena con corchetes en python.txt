@@ -1,0 +1,27 @@
+Para trocear cadenas de caracteres en python empleando el corchete podemos hacerlo de la siguiente manera:
+
+ 1. Tenemos una cadena (en una variable por ejemplo)
+
+>>> a = 'Hola Mundo'
+
+ 2. Mediante un corchete y dos puntos podemos seleccionar que partes de la cadena queremos cortar
+
+>>> a = a[0:9]
+
+ #Según el código escrito arriba el resultado sería: Hola Mund
+
+ 3. Para seleccionar la zona que queremos cortar se emplean dos enteros. El entero de la izquierda define desde que 
+    carácter se borrará toda la cadena restante a la izquierda, y el número de la derecha indica cuál será el carácter 
+    desde el que se empezará a borrar hacia la derecha el resto de la cadena. Un ejemplo:
+
+>>> a = 'Hola Mundo'
+
+#'Hola Mundo' tiene diez caracteres
+
+>>> a = a[]
+
+#Con esta acción indicamos que 'a' pasa a contener la fracción de Hola Mundo que hemos decidido cortar a la derecha. 
+#También podemos usar otra variable.
+#Si indicamos [1:9] cortaríamos la 'H' inicial y la 'o' final ya que hemos determinado que se eliminarán todos los 
+#caracteres a la izquierda del caracter que esté en la posición 1, y todos los caracteres que estén a la derecha del 
+#caracter en la posicion 9
