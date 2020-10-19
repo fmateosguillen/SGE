@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #8c8c8c; font-style: italic;}
+.s1 { color: #080808;}
+.s2 { color: #1750eb;}
+.s3 { color: #0033b3;}
+.s4 { color: #008080; font-weight: bold;}
+.s5 { color: #0037a6;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">#Escribe un programa en Python que, dada una lista de elementos, nos muestre la misma pero sin elementos duplicados </span>
+<span class="s0"># (investiga, y verás que es muy fácil)</span>
+<span class="s1">lista = [</span><span class="s2">1</span><span class="s1">, </span><span class="s2">1</span><span class="s1">, </span><span class="s2">1</span><span class="s1">, </span><span class="s2">2</span><span class="s1">, </span><span class="s2">2</span><span class="s1">, </span><span class="s2">2</span><span class="s1">, </span><span class="s2">2</span><span class="s1">, </span><span class="s2">2</span><span class="s1">, </span><span class="s2">3</span><span class="s1">, </span><span class="s2">4</span><span class="s1">, </span><span class="s2">5</span><span class="s1">]</span>
+<span class="s1">listaCorregida = []</span>
+<span class="s3">for </span><span class="s1">i </span><span class="s3">in </span><span class="s1">lista:</span>
+    <span class="s3">if </span><span class="s1">i </span><span class="s3">not in </span><span class="s1">listaCorregida:</span>
+        <span class="s1">listaCorregida.append(i)</span>
+<span class="s1">print(</span><span class="s4">f'Lista inicial --&gt; </span><span class="s5">{</span><span class="s1">lista</span><span class="s5">}</span><span class="s4">'</span><span class="s1">)</span>
+<span class="s1">print(</span><span class="s4">f'Lista Corregida --&gt; </span><span class="s5">{</span><span class="s1">listaCorregida</span><span class="s5">}</span><span class="s4">'</span><span class="s1">)</span>
+
+
+</pre>
+</body>
+</html>

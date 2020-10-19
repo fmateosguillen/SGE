@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #8c8c8c; font-style: italic;}
+.s1 { color: #080808;}
+.s2 { color: #008080; font-weight: bold;}
+.s3 { color: #0033b3;}
+.s4 { color: #1750eb;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0"># Crea una función en python, triangulo, que reciba un número</span>
+<span class="s0"># entero, e imprima un patrón como este por pantalla. Este sería</span>
+<span class="s0"># el resultado de llamar a triangulo(5)</span>
+<span class="s0">#</span>
+<span class="s0"># *</span>
+<span class="s0"># * *</span>
+<span class="s0"># * * *</span>
+<span class="s0"># * * * *</span>
+<span class="s0"># * * * * *</span>
+<span class="s0"># * * * *</span>
+<span class="s0"># * * *</span>
+<span class="s0"># * *</span>
+<span class="s0"># *</span>
+<span class="s1">print(</span><span class="s2">'Introduce un número'</span><span class="s1">)</span>
+<span class="s1">numero = input()</span>
+<span class="s1">numero = int(numero)</span>
+<span class="s1">asterisco = </span><span class="s2">'*'</span>
+
+<span class="s3">def </span><span class="s1">triangulo(numero):</span>
+    <span class="s1">aux = </span><span class="s4">0</span>
+    <span class="s3">while </span><span class="s1">(aux &lt;= numero):</span>
+        <span class="s1">print(asterisco * aux)</span>
+        <span class="s1">aux = aux + </span><span class="s4">1</span>
+    <span class="s1">aux = aux - </span><span class="s4">2</span>
+    <span class="s3">while </span><span class="s1">(aux &gt; </span><span class="s4">0</span><span class="s1">):</span>
+        <span class="s1">print(asterisco * aux)</span>
+        <span class="s1">aux = aux -</span><span class="s4">1</span>
+
+<span class="s1">triangulo(numero)</span>
+</pre>
+</body>
+</html>

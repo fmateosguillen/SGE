@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #8c8c8c; font-style: italic;}
+.s1 { color: #080808;}
+.s2 { color: #008080; font-weight: bold;}
+.s3 { color: #0037a6;}
+.s4 { color: #1750eb;}
+.s5 { color: #0033b3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">#Escribe un programa que pida primero un número entero y después</span>
+<span class="s0"># pida números enteros hasta que la suma de los números introducidos</span>
+<span class="s0"># coincida con el número inicial. El programa termina escribiendo la</span>
+<span class="s0"># lista de números.</span>
+<span class="s1">print(</span><span class="s2">'Este programa te pide un número y después que introduzcas números</span><span class="s3">\n</span><span class="s2">'</span>
+      <span class="s2">'hasta que su suma sea el número inicial</span><span class="s3">\n</span><span class="s2">'</span><span class="s1">)</span>
+<span class="s1">listaNumeros = []</span>
+<span class="s1">suma = </span><span class="s4">0</span>
+<span class="s1">print(</span><span class="s2">'Indica el número inicial'</span><span class="s1">)</span>
+<span class="s1">numeroInicial = input()</span>
+<span class="s1">numeroInicial = int(numeroInicial)</span>
+<span class="s5">while </span><span class="s1">suma&lt;numeroInicial:</span>
+    <span class="s1">print(</span><span class="s2">'Introduzca un número'</span><span class="s1">)</span>
+    <span class="s1">numeroSuma = input()</span>
+    <span class="s1">numeroSuma = int(numeroSuma)</span>
+    <span class="s5">if </span><span class="s1">(suma + numeroSuma) &gt; numeroInicial:</span>
+        <span class="s1">print(</span><span class="s2">'Te has pasado, introduce otro'</span><span class="s1">)</span>
+    <span class="s5">else</span><span class="s1">:</span>
+        <span class="s1">suma = suma + numeroSuma</span>
+        <span class="s1">listaNumeros.append(numeroSuma)</span>
+<span class="s1">print(</span><span class="s2">f'¡Listo!. La suma de </span><span class="s3">{</span><span class="s1">listaNumeros</span><span class="s3">} </span><span class="s2">es </span><span class="s3">{</span><span class="s1">numeroInicial</span><span class="s3">}</span><span class="s2">'</span><span class="s1">)</span>
+</pre>
+</body>
+</html>

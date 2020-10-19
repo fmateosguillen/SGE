@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>main.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #8c8c8c; font-style: italic;}
+.s1 { color: #080808;}
+.s2 { color: #008080; font-weight: bold;}
+.s3 { color: #0037a6;}
+.s4 { color: #0033b3;}
+</style>
+</head>
+<body bgcolor="#ffffff">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#c0c0c0" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+main.py</font>
+</center></td></tr></table>
+<pre><span class="s0">#Realiza la misma operación del ejercicio anterior pero con números</span>
+<span class="s1">listaNumeros = []</span>
+
+<span class="s1">print(</span><span class="s2">'Escriba tantos numeros como quiera '</span>
+      <span class="s2">'</span><span class="s3">\n</span><span class="s2">(Pulse la tecla INTRO para añadirlos a la lista).'</span>
+      <span class="s2">'</span><span class="s3">\n</span><span class="s2">Para terminar escriba &quot;salir&quot;'</span><span class="s1">)</span>
+<span class="s4">def </span><span class="s1">introducirNumeros():</span>
+    <span class="s1">comprobacion = </span><span class="s4">True</span>
+    <span class="s4">while </span><span class="s1">comprobacion:</span>
+        <span class="s1">entrada = input()</span>
+        <span class="s4">try</span><span class="s1">:</span>
+            <span class="s1">entrada = int(entrada)</span>
+            <span class="s1">listaNumeros.append(entrada)</span>
+        <span class="s4">except </span><span class="s1">ValueError:</span>
+            <span class="s4">if </span><span class="s1">entrada != </span><span class="s2">'salir'</span><span class="s1">:</span>
+                <span class="s1">print(</span><span class="s2">&quot;La entrada es incorrecta: escribe un numero entero&quot;</span><span class="s1">)</span>
+            <span class="s4">else</span><span class="s1">:</span>
+                <span class="s1">print(</span><span class="s2">f'Los números introducidos son: </span><span class="s3">{</span><span class="s1">listaNumeros</span><span class="s3">}</span><span class="s2">'</span><span class="s1">)</span>
+                <span class="s1">comprobacion = </span><span class="s4">False</span>
+<span class="s1">introducirNumeros()</span>
+</pre>
+</body>
+</html>
