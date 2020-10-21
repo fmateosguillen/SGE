@@ -189,7 +189,7 @@
 #             lista.append(random.randint(1, 10))
 #             contador -= 1
 #         print(f'La lista es: {lista}')
-#         for i in lista[-1::-3]:
+#         for i in lista[0::3]:
 #             suma = suma + i
 #         print(f'La suma de los elementos en posiciones que son múltiplo de 3 es: {suma}\n')
 #
