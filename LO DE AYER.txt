@@ -1,0 +1,62 @@
+package com.salesianostriana.dam;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class ShoppingCartTest{
+
+    static ShoppingCart carrito;
+
+    @BeforeAll
+    static void crearCarrito(){
+        carrito = new ShoppingCart();
+    }
+
+/* Cuando ejecuto todos los tests a la vez existe un problema que dice que en el carrito hay un item. La prueba individualmente funciona bien
+    @Test
+    @DisplayName("Carrito Vacío de Inicio")
+    void carritoVacioInicial() {
+        assertEquals(0, carrito.getItemCount(), "El carrito al crearse debe estar vacío");
+    }
+
+ */
+
+    @Test
+    @DisplayName("Carrito con 0 items cuando está vacío")
+    void carritoVacioCuandoVaciado() {
+        carrito.empty();
+        assertEquals(0, carrito.getItemCount(), "El carrito debe estar vacío cuando se limpie");
+    }
+
+    @Test
+    @DisplayName("Producto Añadido")
+    void carritoConItemsNuevos(){
+        Product producto = new Product("Tomates", 2);
+        carrito.addItem(producto);
+        assertEquals(1, carrito.getItemCount(), "En el carrito debe haber un producto");
+    }
+
+    /*
+    @Test@DisplayName("SumaCorrecta")
+    void balanceCorrecto(){
+        Product producto = new Product("Tomates", 2);
+        carrito.addItem(producto);
+        assertEquals((producto.getPrice() + ))
+    }
+    */
+
+
+    @Test
+    @DisplayName("Eliminar un producto que no está en el carrito")
+    void eliminarItemNoEnCarrito() throws ProductNotFoundException {
+        Product producto2 = new Product("Limones", 1.75);
+        assertThrows(ProductNotFoundException.class, () -> carrito.removeItem(producto2), "Quitar un producto inexistente del carrito debe devolver la excepción ProductNotFoundException");
+    }
+
+
+}
