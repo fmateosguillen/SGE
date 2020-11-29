@@ -1,0 +1,131 @@
+--ProyectoApplicationTests.java--
+@ExtendWith(MockitoExtension.class)
+@SpringBootTest
+class ProyectoApplicationTests {
+
+	//Francisco Javier Mateos Guillén
+	@InjectMocks
+	private UsuarioServicio usuarioServicio;
+	//Determinamos el Servicio en el que vamos a inyectar los Mocks
+
+	@Mock
+	private UsuarioRepositorio usuarioRepositorio;
+	//Definimos los Mocks que vamos a usar
+
+	/*
+	 * Generamos un test parametrizado para poder hacer una batería de Tests
+	 * en los que vamos a probar varias entradas para comprobar el funcionamiento del método
+	 */
+	@ParameterizedTest
+	@MethodSource("findAlumnosArguments")
+	void findAlumnosTest(List<Usuario> lista1, List<Usuario> lista2){
+		Mockito.when(usuarioRepositorio.findAll()).thenReturn(lista2);
+		//Usamos Mockito para que en lugar de acceder al repositorio real, use los datos que he proporcionado
+		//en el método estático "findAlumnosArguments"
+		List<Usuario> listaAlumnos = usuarioServicio.findAlumnos();
+		//Llamamos al método que queremos testear
+		Assertions.assertEquals(lista2, lista1);
+		//Hacemos una comprobación en la que determinaremos si dos listas que le pasemos son iguales mediante Aserciones
+	}
+
+	//En este método estático vamos a introducir todos los datos que vamos a usar en el test
+	static Stream<Arguments> findAlumnosArguments(){
+		Usuario a1 = new Alumno();
+		a1.setUsername("pepe123");
+		a1.setNombre("Pepe");
+		a1.setApellidos("Gómez Gómez");
+		a1.setActive(true);
+		a1.setPrimeraVez(false);
+
+		Usuario a2 = new Alumno();
+		a2.setUsername("luis123");
+		a2.setNombre("Luis");
+		a2.setApellidos("Pérez Pérez");
+		a2.setActive(true);
+		a2.setPrimeraVez(true);
+
+		return Stream.of(
+			Arguments.arguments(Arrays.asList(), Arrays.asList()),
+				Arguments.arguments(Arrays.asList(a1), Arrays.asList(a1)),
+			Arguments.arguments(Arrays.asList(a1, a2), Arrays.asList(a1, a2))
+		);
+	}
+-------------------------------------------------------------------------------------------------------------------------------------
+
+--TestsConsultas.java--
+package com.mancinaCastroPablo.Proyecto;
+import com.mancinaCastroPablo.Proyecto.modelos.Asignatura;
+import com.mancinaCastroPablo.Proyecto.modelos.Curso;
+import com.mancinaCastroPablo.Proyecto.repositorios.AsignaturaRepositorio;
+import com.mancinaCastroPablo.Proyecto.repositorios.CursoRepositorio;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
+import java.util.Arrays;
+import java.util.List;
+
+@DataJpaTest
+public class TestsConsultas {
+
+    @Autowired private TestEntityManager entityManager;
+    @Autowired private AsignaturaRepositorio asignaturaRepositorio;
+    @Autowired private CursoRepositorio cursoRepositorio;
+
+    @Test
+    @DisplayName("MostrarAsignaturasDeUnCurso(Iguales)")
+    void testAsigCurso1(){
+        Curso c1 = new Curso();
+        entityManager.persist(c1);
+        Asignatura asig = new Asignatura();
+        asig.setCurso(c1);
+        entityManager.persist(asig);
+        List<Asignatura> a1 = Arrays.asList(asig);
+
+        List<Asignatura> listaAsignaturas = asignaturaRepositorio.findByCurso(c1);
+        List<Asignatura> resultado = Arrays.asList(asig);
+        Assertions.assertEquals(listaAsignaturas, resultado);
+    }
+
+    @Test
+    @DisplayName("MostrarAsignaturasDeUnCurso(ListaDiferente)")
+    //Comprobar si las listas son distintas al tener distintos datos introducidos
+    void testAsigCurso2(){
+        Curso c2 = new Curso();
+        entityManager.persist(c2);
+        Asignatura asig2 = new Asignatura();
+        List<Asignatura> a2 = Arrays.asList(asig2);
+        List<Asignatura> listaAsignaturas = asignaturaRepositorio.findByCurso(c2);
+        Assertions.assertNotEquals(listaAsignaturas, a2);
+    }
+
+    @Test
+    @DisplayName("MostrarAsignaturasDeUnCurso(ListaVacía)")
+    void testAsigCurso3(){
+        Curso c3 = new Curso();
+        entityManager.persist(c3);
+        List<Asignatura> a3 = Arrays.asList();
+
+        List<Asignatura> listaAsignaturas = asignaturaRepositorio.findByCurso(c3);
+        Assertions.assertEquals(listaAsignaturas, a3);
+    }
+
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+
+--CursoServicio.java--
+public List<Asignatura> asignaturasCurso(Curso curso){
+        return asignaturaRepositorio.findByCurso(curso);
+    }
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+--AsignaturaRepositorio.java--
+    /**
+    * Buscar todas las asignaturas de un curso dado
+    * @param curso
+    * @return Lista de asignaturas de ese curso
+    */
+    List<Asignatura> findByCurso(Curso curso);
